@@ -1,7 +1,6 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
-const getLocation = require('../utils/weatherUtils').getLocation
 const getTemperature = require('../utils/weatherUtils').getTemperature
 
 
@@ -39,20 +38,17 @@ app.get("/api/weather", (req, res) => {
             error: 'You must provide an city!'
         })
     }
-    getLocation(req.query.city, ({ latitude, longitude, city } = {}, error) => {
+    getTemperature(req.query.city, (data = {}, error) => {
         if (error) {
-            return res.send({ error: "Error while fetching location :" + error });
+            return res.send({ error: "Error while fetching temperature :" + error });
         }
-        console.log("The latitude : " + latitude + ", and longitude : " + longitude + ", of city : " + city);
-        getTemperature(latitude, longitude, city, ({ city, temp } = {}, error) => {
-            if (error) {
-                return res.send({ error: "Error while fetching temperature :" + error });
-            }
-            console.log("The Temperature is city : " + city + " is: ", temp);
-            res.send({
-                city: city,
-                temp: temp
-            })
+        console.log("The Weather Data of city : " + req.query.city + " is: ", data);
+        res.send({
+            city: data.city,
+            longitude: data.longitude,
+            latitude: data.latitude,
+            temperature: data.temp + " °C",
+            feels_like: data.feels_like + " °C",
         })
     })
 })

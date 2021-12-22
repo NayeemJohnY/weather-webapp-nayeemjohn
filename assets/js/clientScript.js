@@ -15,9 +15,14 @@ weatherForm.addEventListener('submit', (e) => {
                 weatherError.textContent = data.error;
                 weatherInfo.textContent = ''
             } else {
-                console.log("City :", data.city);
-                console.log("Temp :", data.temp);
-                weatherInfo.innerHTML = "City : <b>" + data.city + "</b> Temp : <b>" + data.temp + "</b>"
+                console.log("Weather Data :", data);
+                var weather_data = "<p><b>Weather Information for the City :</b></p><br>"
+                for (var property in data) {
+                    key = (property.charAt(0).toUpperCase() + property.slice(1)).replace("_", " ")
+                    value = data[property]
+                    weather_data += "<tr><td>" + key + "</td><td>" + value + "</td></tr>";
+                }
+                weatherInfo.innerHTML = "<table>" + weather_data + "</table>"
             }
         }).catch(err => {
             console.log(err);
