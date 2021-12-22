@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Weather App</title>
+    <link rel="icon" href="/img/weather.png">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    {{>header}}
+     <form>
+        <label for="city">Find Weather: </label>
+        <input type="text" name="city", placeholder="Enter city">
+        <button>Find</button>
+        <p id="weatherInfo"></p>
+        <p id="weatherError"></p>
+    </form>
+    {{>footer}}
+</body>
+    <script src="/js/clientScript.js"></script>
+</html>

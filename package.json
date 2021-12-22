@@ -1,0 +1,19 @@
+{
+    "name": "weather-webapp",
+    "version": "1.0.0",
+    "description": "Web App to fetch Weather Info",
+    "main": "app.js",
+    "scripts": {
+        "start": "node src/app.js",
+        "dev": "nodemon src/app.js -e js, hbs"
+    },
+    "author": "Nayeem John",
+    "license": "ISC",
+    "dependencies": {
+        "axios": "^0.24.0",
+        "express": "^4.17.2"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
+}
